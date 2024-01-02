@@ -1,0 +1,12 @@
+[Unit]
+Description=DDNS Updater Service
+After=network.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/ddnsUpdater/
+ExecStart=/usr/bin/python3 /home/pi/ddnsUpdater/ddnsUpdater.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

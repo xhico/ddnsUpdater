@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/python3
 
-import json
-import os
 import datetime
-import traceback
+import json
 import logging
-import urllib.request
-from Misc import get911, sendEmail
+import os
+import traceback
+
+import requests
+from Misc import sendEmail
 
 
 def getLog():
@@ -36,7 +37,7 @@ def main():
 
     # Get external ip
     logger.info("Get externalIP")
-    externalIP = urllib.request.urlopen("https://v4.ident.me/").read().decode("utf8")
+    externalIP = requests.get('https://api.ipify.org').text
 
     # Check if externalIP has changed
     if log["externalIP"] != externalIP:

@@ -7,9 +7,8 @@ import logging
 import os
 import traceback
 
+import Misc
 import requests
-
-from Misc import sendEmail
 
 
 def getLog():
@@ -45,7 +44,7 @@ def main():
         logger.info("EXTERNAL IP CHANGE")
         logger.info("From: " + log["externalIP"])
         logger.info("To: " + externalIP)
-        sendEmail("EXTERNAL IP CHANGE", "From: " + log["externalIP"] + "\n" + "To: " + externalIP)
+        Misc.sendEmail("EXTERNAL IP CHANGE", "From: " + log["externalIP"] + "\n" + "To: " + externalIP)
     else:
         logger.info("NO CHANGE")
 
@@ -71,6 +70,6 @@ if __name__ == '__main__':
         main()
     except Exception as ex:
         logger.error(traceback.format_exc())
-        sendEmail(os.path.basename(__file__), str(traceback.format_exc()))
+        Misc.sendEmail(os.path.basename(__file__), str(traceback.format_exc()))
     finally:
         logger.info("End")

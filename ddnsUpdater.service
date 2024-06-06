@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=pi
 WorkingDirectory=/home/pi/ddnsUpdater/
-ExecStart=/usr/bin/python3 /home/pi/ddnsUpdater/ddnsUpdater.py
+ExecStart=/home/pi/ddnsUpdater/venv/bin/python3 /home/pi/ddnsUpdater/ddnsUpdater.py
 Restart=on-failure
 
 [Install]
